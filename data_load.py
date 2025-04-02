@@ -7,11 +7,9 @@ import numpy as np
 import datetime as dt
 import streamlit as st
 
-# Data Uploader -- Sheets
-scopes = ['https://spreadsheets.google.com/feeds',
-          'https://www.googleapis.com/auth/drive']
+scopes = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
-creds = Credentials.from_service_account_file(st.secrets["google_creds"],scopes=scopes)
+creds = Credentials.from_service_account_info(st.secrets["google_creds"], scopes=scopes)
 client = gspread.authorize(creds)
 
 #Database Need Cluster
