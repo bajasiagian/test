@@ -11,8 +11,7 @@ import streamlit as st
 scopes = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
-creds = Credentials.from_service_account_file(st.secrets["google_creds"],scopes=scopes)
-client = gspread.authorize(creds)
+client = gspread.service_account_from_dict(st.secrets["google_creds"])
 
 #Database Need Cluster
 need_cluster = client.open("Gen x Needed Actual Lead Type 71").worksheet('By Cluster')
