@@ -1,5 +1,5 @@
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from oauth2client.service_account import Credentials
 import pandas as pd
 import requests
 import json
@@ -11,7 +11,7 @@ import streamlit as st
 scopes = ['https://spreadsheets.google.com/feeds',
           'https://www.googleapis.com/auth/drive']
 
-creds = ServiceAccountCredentials.from_json_keyfile_dict(st.secrets["google_creds"], scopes)
+creds = Credentials.from_service_account_file(st.secrets['google_creds'],scopes=scopes)
 client = gspread.authorize(creds)
 
 #Database Need Cluster
