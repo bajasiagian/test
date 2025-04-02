@@ -10,7 +10,7 @@ import datetime as dt
 scopes = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
-creds = Credentials.from_service_account_file("secret.json",scopes=scopes)
+creds = Credentials.from_service_account_file(st.secrets["google_creds"],scopes=scopes)
 client = gspread.authorize(creds)
 
 #Database Need Cluster
@@ -77,7 +77,7 @@ running_order = pd.DataFrame(data_running_order, columns=column_names_running_or
 #Get Data for Today
 headers_visit = {
     'accept': 'application/json',
-    'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDM5Y2YyNTZiMzFjM2MzYjg4MDc1MmRjM2QxNGVlMGNiMWM3NDUxN2QxMjYwMzBhOTJhYzgxYzI4MDM0ZjczNmU5N2QxMzJkNTMyNDIzMTAiLCJpYXQiOjE3NDAyNDkwMTgsIm5iZiI6MTc0MDI0OTAxOCwiZXhwIjoxNzcxNzg1MDE4LCJzdWIiOiI0NDA2MiIsInNjb3BlcyI6W119.Ft1JTpsyydzpsDYvYBWHEL1RHOuNRNK0YoVfrAM2mJ92wQzZjXQxap-cZMHTOdtlJEC5Sg2GHBQTmWpnEGuJiIY_ksK8d5MH0b8ojSRydaiUdre_J-5EFMdxWbfFVKK14wrxazd10KY07E82wZ7zoledYFfW4ewl4gAzc1mJ9EIKKVECTRSsS8tC208Ur24C0mHha86LV9Z3GEV0lC2QbgZxehL9vcZ5M7bP3sfN8VlKZh3_dVHp3KCgWQRqeAf0XDRx6oe26FoETkwB5x8Pr9Z5KgFcBH9v3B4i4bs4b84_GR3ElHXnfOWz1wPWhDvKjje7xmVFMcH7mf8S8ip1qjPGqeooDKhxGjCmyAMlGjifSyRjECegblq28DRBKy7h-f7aQ0bYVsFs96wcUuj2kln3wOOzUS174QmSV1SY9mJ2MufT7rtSjmr9fom-oybqbVl3zmmSDp2kslzzWZFWtUu7zyVcp-tEvaL8R1dSgDIv4fmxVmWO63P9DYKxHQsiRekYvIPGcWTQ2-n2MmXkdtYEH-Q3RQouNF8A4H9B3tcZwaPDtXHvR94fWfiqHKXhXRHbU9tdYjXRhafz55S6bR3tPf-9TRoW_8XFi-vNRbmnXMGqMgaasPiQn_mMawFu42eYN-6taZ95cp7rMU_5GaceFAWofEWrdxCHy51CxEc',
+    'Authorization': st.secrets["kerjoo_creds"]["creds"],
 }
 params_visit = {'date_start': '2024-02-22',}
 response_visit = requests.get('https://api.kerjoo.com/tenant11170/api/v1/client-visits', params=params_visit, headers=headers_visit)
