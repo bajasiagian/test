@@ -1,5 +1,5 @@
 import gspread
-from google.oauth2.service_account import Credentials
+from google.oauth2.service_account import ServiceAccountCredentials
 import pandas as pd
 import requests
 import json
